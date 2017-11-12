@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ABC Events </title>
+
+
+    <!-- Bootstrap -->
+    <link href="{% static 'Proyecto_www/vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'Proyecto_www/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'Proyecto_www/vendors/nprogress/nprogress.css' %}" rel="stylesheet" >
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'Proyecto_www/build/css/custom.min.css' %}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="{% url 'index' %}" class="site_title"><i class="fa fa-paw"></i> <span>ABC</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+
+                <!-- /menu profile quick info -->
+                <br />
+                <!-- sidebar menu -->
+                {% block menu %}
+                {% endblock menu %}
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                {% block botones %}
+                {% endblock botones %}
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+
+    <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  {% block top_right %}
+                    {% endblock top_right %}
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+
+                  </ul>
+
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title col-md-12">
+                    {% block TituloContenido %}
+                    {% endblock TituloContenido %}
+                </div>
+
+                <div class="clearfix"></div>
+                {% block Contenido %}
+                {% endblock Contenido %}
+
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="{% static 'Proyecto_www/vendors/jquery/dist/jquery.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'Proyecto_www/vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'Proyecto_www/vendors/fastclick/lib/fastclick.js' %}"></script>
+<!-- NProgress -->
+<script src="{% static 'Proyecto_www/vendors/nprogress/nprogress.js' %}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{% static 'Proyecto_www/build/js/custom.min.js' %}"></script>
+</body>
+</html>

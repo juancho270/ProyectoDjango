@@ -1,0 +1,194 @@
+{% extends 'Proyecto_www/base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block menu %}
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <h3>MENU</h3>
+            <ul class="nav side-menu">
+                 <li><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{% url 'registro_user' %}"><i class="fa fa-user-plus"></i>Registrar</a></li>
+                        <li><a href="{% url 'consulta_user' %}"><i class="fa fa-search"></i>Consultar</a></li>
+                        <li><a href="{% url 'seleccionar_user' %}"><i class="fa fa-pencil-square-o"></i>Modificar</a></li>
+                    </ul>
+                </li>
+                 <li><a><i class="fa fa-newspaper-o"></i> Noticias <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{% url 'registrar_noticia' %}"><i class="fa fa-user-plus"></i>Registrar</a></li>
+                        <li><a href="{% url 'consultar_noticia' %}"><i class="fa fa-search"></i>Consultar</a></li>
+                        <li><a href="#"><i class="fa fa-pencil-square-o"></i>Modificar</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="menu_section">
+            <h3>Other menu</h3>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-bug"></i> ¿Quién soy? <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="#">Juan Carlos Viteri</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        {% comment %}
+    {% endcomment %}
+
+    </div>
+{% endblock menu %}
+
+{% block TituloContenido %}
+
+    <div class="title_left">
+        <h3>Formulario Registro</h3>
+    </div>
+
+
+{% endblock TituloContenido %}
+
+{% block Contenido %}
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Llenamé
+                    </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="x_content">
+                    <br/>
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
+                          method="POST"> {% csrf_token %}
+                        <h1>Formulario de Registro</h1>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Usuarios <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"
+                                        aria-expanded="false">Seleccione uno <span class="caret"></span>
+                                </button>
+                                <ul role="menu" class="dropdown-menu">
+                                    {% for abc in obj %}
+                                        <li><a href='#'>{{ abc.nombre}}</a>
+                                        </li>
+                                    {% endfor %}
+
+
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.Nombre show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellido <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.Apellido show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Cedula <span
+                                    class="required"></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.Cedula show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento <span
+                                    class=""></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.Fecha_de_Nacimiento show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.Estado show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Usuario <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                {% bootstrap_field form_registro.user show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Contraseña <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.password show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo Usuario <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.Tipo show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo <span
+                                    class=""></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.Correo show_label=False %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono <span
+                                    class=""></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {% bootstrap_field form_registro.Telefono show_label=False %}
+                            </div>
+                        </div>
+
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button class="btn btn-primary" type="button">Cancel</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock Contenido %}
+
+{% block top_right %}
+    <button type="button" onclick="location='{% url 'logout' %}'" class="btn btn-default">Logout</button>
+{% endblock top_right %}

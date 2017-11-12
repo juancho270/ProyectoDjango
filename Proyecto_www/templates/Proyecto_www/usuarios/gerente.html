@@ -1,0 +1,46 @@
+{% extends 'Proyecto_www/base.html' %}
+{% load static %}
+
+{% block menu %}
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <h3>MENU</h3>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{% url 'registro_user' %}"><i class="fa fa-user-plus"></i>Registrar</a></li>
+                        <li><a href="{% url 'consulta_user' %}"><i class="fa fa-search"></i>Consultar</a></li>
+                        <li><a href="#"><i class="fa fa-close"></i>Eliminar</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="menu_section">
+            <h3>Other menu</h3>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-bug"></i> ¿Quién soy? <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="#">Juan Carlos Viteri</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    {% comment %}
+    {% endcomment %}
+
+    </div>
+
+
+{% endblock menu %}
+ {% block top_right %}
+    <button type="button" onclick="location='{% url 'logout' %}'" class="btn btn-default">Logout</button>
+{% endblock top_right %}
+
+{% block navegacion_izquierda %}
+
+{% endblock navegacion_izquierda %}
+
+{% block navegacion_derecha %}
+
+{% endblock navegacion_derecha %}

@@ -1,0 +1,147 @@
+{% extends 'Proyecto_www/base.html' %}
+{% load static %}
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DataTables | Gentelella</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'Proyecto_www/vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'Proyecto_www/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'Proyecto_www/vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'Proyecto_www/vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- Datatables -->
+    <!-- Datatables -->
+    <link href="{% static 'Proyecto_www/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css' %}"
+          rel="stylesheet">
+    <link href="{% static 'Proyecto_www/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}"
+          rel="stylesheet">
+    <link href="{% static 'Proyecto_www/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css' %}"
+          rel="stylesheet">
+    <link href="{% static 'Proyecto_www/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css' %}"
+          rel="stylesheet">
+    <link href="{% static 'Proyecto_www/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css' %}"
+          rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'Proyecto_www/build/css/custom.min.css' %}" rel="stylesheet">
+</head>
+{% block menu %}
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <h3>MENU</h3>
+            <ul class="nav side-menu">
+                <li class="active"><a href="{% url 'index' %}"><i class="fa fa-users"></i> Usuarios <span
+                        class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" style="display: block">
+                        <li><a href="{% url 'registrar_evento' %}"><i class="fa fa-user-plus"></i>Registrar</a>
+                        </li>
+                        <li class="active"><a href="{% url 'consulta_Evento' %}"><i class="fa fa-search"></i>Consultar</a>
+                        </li>
+                        <li><a href="#}"><i class="fa fa-pencil-square-o"></i>Modificar</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="menu_section">
+            <h3>Other menu</h3>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-bug"></i> ¿Quién soy? <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="#">Juan Carlos Viteri</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        {% comment %}
+    {% endcomment %}
+
+    </div>
+{% endblock menu %}
+
+{% block Contenido %}
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Default Example
+                        <small>Users</small>
+                    </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <p class="text-muted font-13 m-b-30">
+                        DataTables has most features enabled by default, so all you need to do to use it with your own
+                        tables is to call the construction function: <code>$().DataTable();</code>
+                    </p>
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+
+                            <th>Descripcion</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for abc in obj %}
+                            <tr>
+                                <td>{{ abc.nombre }}</td>
+                                <td>{{ abc.descripcion }}</td>
+                                <td>{{ abc.fecha }}</td>
+                                <td>{{ abc.estado }}</td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock Contenido %}
+
+{% block TituloContenido %}
+
+    <div class="title_left">
+        <h3> Consultar Usuario</h3>
+    </div>
+
+
+{% endblock TituloContenido %}
+
+{% block top_right %}
+    <button type="button" onclick="location='{% url 'logout' %}'" class="btn btn-default">Logout</button>
+{% endblock top_right %}
